@@ -113,6 +113,26 @@ export removeRelevantAsset = (req, res) ->
 
     return res.send(response)
 
+############################################################
+export getRelevantAssets = (req, res) ->
+    start = performance.now()
+
+    try validate.getRelevantAssets(req.body)
+    catch err then return res.status(400).send({error: "validation: #{err.message}"})
+
+    try await authentication.getRelevantAssets(req)
+    catch err then return res.status(401).send({error: "authentication: #{err.message}"})
+
+    # response = await h.getRelevantAssets(req.body.publicKey, req.body.timestamp, req.body.signature)
+    try response = await h.getRelevantAssets(req)
+    catch err then return res.send({error: "execution: #{err.message}"})
+    
+    end = performance.now()
+    diffMS = end - start
+    console.log("/getRelevantAssets took #{diffMS}ms\n")
+
+    return res.send(response)
+
 
 ############################################################
 export addRelevantAssetPair = (req, res) ->
@@ -153,28 +173,6 @@ export removeRelevantAssetPair = (req, res) ->
     console.log("/removeRelevantAssetPair took #{diffMS}ms\n")
 
     return res.send(response)
-
-
-############################################################
-export getRelevantAssets = (req, res) ->
-    start = performance.now()
-
-    try validate.getRelevantAssets(req.body)
-    catch err then return res.status(400).send({error: "validation: #{err.message}"})
-
-    try await authentication.getRelevantAssets(req)
-    catch err then return res.status(401).send({error: "authentication: #{err.message}"})
-
-    # response = await h.getRelevantAssets(req.body.publicKey, req.body.timestamp, req.body.signature)
-    try response = await h.getRelevantAssets(req)
-    catch err then return res.send({error: "execution: #{err.message}"})
-    
-    end = performance.now()
-    diffMS = end - start
-    console.log("/getRelevantAssets took #{diffMS}ms\n")
-
-    return res.send(response)
-
 
 ############################################################
 export getRelevantAssetPairs = (req, res) ->
@@ -217,7 +215,6 @@ export getFailingIdentifiers = (req, res) ->
 
     return res.send(response)
 
-
 ############################################################
 export getServiceStatus = (req, res) ->
     start = performance.now()
@@ -237,6 +234,5 @@ export getServiceStatus = (req, res) ->
     console.log("/getServiceStatus took #{diffMS}ms\n")
 
     return res.send(response)
-
 
 #endregion

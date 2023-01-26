@@ -1,6 +1,6 @@
 ############################################################
 import *  as service from "./servicefunctions.js"
-import { responseValidators as validate} from "./authenticationschemas.js"
+import { responseValidators as validate} from "./observerschemas.js"
 
 ############################################################
 ok = true

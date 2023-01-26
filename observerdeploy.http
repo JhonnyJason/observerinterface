@@ -1,5 +1,5 @@
 ### 
-POST {{deploy}}/addClientToServe
+POST {{deploy}}/getLatestOrders
 content-type: application/json
 
 {
@@ -9,7 +9,7 @@ content-type: application/json
 "signature": "..."
 }
 ### 
-POST {{deploy}}/getNodeId
+POST {{deploy}}/getLatestTickers
 content-type: application/json
 
 {
@@ -19,7 +19,7 @@ content-type: application/json
 "signature": "..."
 }
 ### 
-POST {{deploy}}/startSession
+POST {{deploy}}/getLatestBalances
 content-type: application/json
 
 {

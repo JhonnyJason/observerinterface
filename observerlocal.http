@@ -1,30 +1,30 @@
 ### 
-POST {{local}}/addClientToServe
+POST {{local}}/getLatestOrders
 content-type: application/json
 
 {
 "clientPublicKey": "...", 
-"timestamp": "...", 
-"nonce": "...",
+"timestamp": "...",
+"nonce": 0,
 "signature": "..."
 }
 ### 
-POST {{local}}/getNodeId
+POST {{local}}/getLatestTickers
 content-type: application/json
 
 {
 "publicKey": "...", 
-"timestamp": "...", 
-"nonce": "...",
+"timestamp": "...",
+"nonce": 1, 
 "signature": "..."
 }
 ### 
-POST {{local}}/startSession
+POST {{local}}/getLatestBalances
 content-type: application/json
 
 {
 "publicKey": "...", 
-"timestamp": "...", 
-"nonce": "...",
+"timestamp": "...",
+"nonce", 2, 
 "signature": "..."
 }

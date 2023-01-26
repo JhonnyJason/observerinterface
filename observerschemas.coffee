@@ -7,63 +7,93 @@ import {
 #region Arguments
 
 ############################################################
-## Master Functions
+#region Regular Operations
 
-addClientToServeArguments = {
-    clientPublicKey: STRINGHEX64
-    timestamp: NUMBER
-    nonce: NUMBER
-    signature: STRINGHEX128
+############################################################
+getLatestOrdersArguments = {
+    authCode: STRINGHEX64
+    assetPairs: ARRAY
+    subscriber: STRING
 }
 ############################################################
-getClientsToServeArguments = {
-    timestamp: NUMBER
-    nonce: NUMBER
-    signature: STRINGHEX128
+getLatestTickersArguments = {
+    authCode: STRINGHEX64
+    assetPairs: ARRAY
+    subscriber: STRING
 }
 ############################################################
 removeClientToServeArguments = {
-    clientPublicKey: STRINGHEX64
-    timestamp: NUMBER
-    nonce: NUMBER
-    signature: STRINGHEX128
+    authCode: STRINGHEX64
+    assets: ARRAY
+    subscriber: STRING
 }
 
+#endregion
 
 ############################################################
-## Client Functions
+#region Maintenance Operations
 
-getNodeIdArguments = {
-    publicKey: STRINGHEX64
-    timestamp: NUMBER
-    nonce: NUMBER
-    signature: STRINGHEX128
+############################################################
+addRelevantAsset = {
+    authCode: STRINGHEX64
+    exchangeName: STRING
+    ourName: STRING
 }
 ############################################################
-startSessionArguments = {
-    publicKey: STRINGHEX64
-    timestamp: NUMBER
-    nonce: NUMBER
-    signature: STRINGHEX128
+removeRelevantAsset = {
+    authCode: STRINGHEX64
+    ourName: STRING
 }
+############################################################
+getRelevantAssets = {
+    authCode: STRINGHEX64
+}
+
+############################################################
+addRelevantAssetPair = {
+    authCode: STRINGHEX64
+    exchangeName: STRING
+    ourName: STRING
+}
+############################################################
+removeRelevantAssetPair = {
+    authCode: STRINGHEX64
+    ourName: STRING
+}
+############################################################
+getRelevantAssetPairs = {
+    authCode: STRINGHEX64
+}
+
+############################################################
+getFailingIdentifiers = {
+    authCode: STRINGHEX64
+}
+############################################################
+getServiceStatus = {
+    authCode: STRINGHEX64
+}
+
+#endregion
 
 #endregion
 
 ############################################################
 #region Responses
 
-############################################################
-getClientsToServeResponse = {
-    toServeList: ARRAY
-}
 
 ############################################################
-getNodeIdResponse = {
-    serverNodeId: STRINGHEX64
-    timestamp: NUMBER
-    signature: STRINGHEX128
+getRelevantAssetsResponse = {
+    relevantAssets: ARRAY
 }
-
+############################################################
+getRelevantAssetPairsResponse = {
+    relevantAssetPairs: ARRAY
+}
+############################################################
+getFailingIdentifiersResponse = {
+    failingIdentifiers: ARRAY
+}
 
 #endregion
 
