@@ -1,0 +1,30 @@
+### 
+POST {{local}}/addClientToServe
+content-type: application/json
+
+{
+"clientPublicKey": "...", 
+"timestamp": "...", 
+"nonce": "...",
+"signature": "..."
+}
+### 
+POST {{local}}/getNodeId
+content-type: application/json
+
+{
+"publicKey": "...", 
+"timestamp": "...", 
+"nonce": "...",
+"signature": "..."
+}
+### 
+POST {{local}}/startSession
+content-type: application/json
+
+{
+"publicKey": "...", 
+"timestamp": "...", 
+"nonce": "...",
+"signature": "..."
+}
