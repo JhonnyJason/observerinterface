@@ -1,29 +1,64 @@
 import { postData } from "thingy-network-base"
 
 ############################################################
-export addClientToServe = (sciURL, clientPublicKey, timestamp, nonce, signature) ->
-    requestObject = { clientPublicKey, timestamp, nonce, signature }
-    requestURL = sciURL+"/addClientToServe"
+## Regular Operations
+export getLatestOrders = (sciURL, authCode, assetPairs, subscriber) ->
+    requestObject = { authCode, assetPairs, subscriber }
+    requestURL = sciURL+"/getLatestOrders"
     return postData(requestURL, requestObject)
 
-export getClientsToServe = (sciURL, timestamp, nonce, signature) ->
-    requestObject = { timestamp, nonce, signature }
-    requestURL = sciURL+"/getClientsToServe"
+export getLatestTickers = (sciURL, authCode, assetPairs, subscriber) ->
+    requestObject = { authCode, assetPairs, subscriber }
+    requestURL = sciURL+"/getLatestTickers"
     return postData(requestURL, requestObject)
 
-export removeClientToServe = (sciURL, clientPublicKey, timestamp, nonce, signature) ->
-    requestObject = { clientPublicKey, timestamp, nonce, signature }
-    requestURL = sciURL+"/removeClientToServe"
+export getLatestBalances = (sciURL, authCode, assetPairs, subscriber) ->
+    requestObject = { authCode, assetPairs, subscriber }
+    requestURL = sciURL+"/getLatestTickers"
     return postData(requestURL, requestObject)
 
 
 ############################################################
-export getNodeId = (sciURL, publicKey, timestamp, nonce, signature) ->
-    requestObject = { publicKey, timestamp, nonce, signature}
-    requestURL = sciURL+"/getNodeId"
+## Maintenance Operations
+
+export addRelevantAsset = (sciURL, authCode, exchangeName, ourName) ->
+    requestObject = { authCode, exchangeName, ourName }
+    requestURL = sciURL+"/addRelevantAsset"
     return postData(requestURL, requestObject)
 
-export startSession = (sciURL, publicKey, timestamp, nonce, signature) ->
-    requestObject = { publicKey, timestamp, nonce, signature }
-    requestURL = sciURL+"/startSession"
+export removeRelevantAsset = (sciURL, authCode, ourName) ->
+    requestObject = { authCode, ourName }
+    requestURL = sciURL+"/removeRelevantAsset"
+    return postData(requestURL, requestObject)
+
+export getRelevantAssets = (sciURL, authCode) ->
+    requestObject = { authCode }
+    requestURL = sciURL+"/getRelevantAssets"
+    return postData(requestURL, requestObject)
+
+
+export addRelevantAssetPair = (sciURL, authCode, exchangeName, ourName) ->
+    requestObject = { authCode, exchangeName, ourName }
+    requestURL = sciURL+"/addRelevantAssetPair"
+    return postData(requestURL, requestObject)
+
+export removeRelevantAssetPair = (sciURL, authCode, ourName) ->
+    requestObject = { authCode, ourName }
+    requestURL = sciURL+"/removeRelevantAssetPair"
+    return postData(requestURL, requestObject)
+
+export getRelevantAssetPairs = (sciURL, authCode) ->
+    requestObject = { authCode }
+    requestURL = sciURL+"/getRelevantAssetPairs"
+    return postData(requestURL, requestObject)
+
+
+export getFailingIdentifiers = (sciURL, authCode) ->
+    requestObject = { authCode }
+    requestURL = sciURL+"/getFailingIdentifiers"
+    return postData(requestURL, requestObject)
+
+export getServiceStatus = (sciURL, authCode) ->
+    requestObject = { authCode }
+    requestURL = sciURL+"/getServiceStatus"
     return postData(requestURL, requestObject)
