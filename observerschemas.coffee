@@ -107,44 +107,44 @@ getFailingIdentifiersResponse = {
 export responseValidators = {
 
     ## Regular Operations
-    getLatestOrders = -> true
-    getLatestTickers = -> true
-    getLatestBalances = -> true
+    getLatestOrders: -> true
+    getLatestTickers: -> true
+    getLatestBalances: -> true
 
     ## Maintenance Operations
-    addRelevantAsset = -> true
-    removeRelevantAsset = -> true
-    getRelevantAssets = (response) -> validate(response, getRelevantAssetsResponse)
+    addRelevantAsset: -> true
+    removeRelevantAsset: -> true
+    getRelevantAssets: (response) -> validate(response, getRelevantAssetsResponse)
 
-    addRelevantAssetPair = -> true
-    removeRelevantAssetPair = -> true
-    getRelevantAssetPairs = (response) -> validate(response, getRelevantAssetPairsResponse)
+    addRelevantAssetPair: -> true
+    removeRelevantAssetPair: -> true
+    getRelevantAssetPairs: (response) -> validate(response, getRelevantAssetPairsResponse)
 
-    getFailingIdentifiers = (response) -> validate(response, getFailingIdentifiersResponse)
+    getFailingIdentifiers: (response) -> validate(response, getFailingIdentifiersResponse)
 
     ## TODO
-    # getServiceStatus = (response) -> validate(response, getServiceStatusResponse)
-    getServiceStatus = -> true
+    # getServiceStatus: (response) -> validate(response, getServiceStatusResponse)
+    getServiceStatus: -> true
 
 }
 
 export argumentValidators = {
 
     ## Regular Operations
-    getLatestOrders = (args) -> validate(args, getLatestOrdersArguments)
-    getLatestTickers = (args) -> validate(args, getLatestTickersArguments)
-    getLatestBalances = (args) -> validate(args, getLatestBalancesArguments)
+    getLatestOrders: (args) -> validate(args, getLatestOrdersArguments)
+    getLatestTickers: (args) -> validate(args, getLatestTickersArguments)
+    getLatestBalances: (args) -> validate(args, getLatestBalancesArguments)
 
     ## Maintenance Operations
-    addRelevantAsset = (args) -> validate(args, addRelevantAssetArguments)
-    removeRelevantAsset = (args) -> validate(args, removeRelevantAssetArguments)
-    getRelevantAssets = (args) -> validate(args, getRelevantAssetsArguments)
+    addRelevantAsset: (args) -> validate(args, addRelevantAssetArguments)
+    removeRelevantAsset: (args) -> validate(args, removeRelevantAssetArguments)
+    getRelevantAssets: (args) -> validate(args, getRelevantAssetsArguments)
 
-    addRelevantAssetPair = (args) -> validate(args, addRelevantAssetPairArguments)
-    removeRelevantAssetPair = (args) -> validate(args, removeRelevantAssetPairArguments)
-    getRelevantAssetPairs = (args) -> validate(args, getRelevantAssetPairsArguments)
+    addRelevantAssetPair: (args) -> validate(args, addRelevantAssetPairArguments)
+    removeRelevantAssetPair: (args) -> validate(args, removeRelevantAssetPairArguments)
+    getRelevantAssetPairs: (args) -> validate(args, getRelevantAssetPairsArguments)
     
-    getFailingIdentifiers = (args) -> validate(args, getFailingIdentifiersArguments)
-    getServiceStatus = (args) -> validate(args, getServiceStatusArguments)
+    getFailingIdentifiers: (args) -> validate(args, getFailingIdentifiersArguments)
+    getServiceStatus: (args) -> validate(args, getServiceStatusArguments)
 
 }
