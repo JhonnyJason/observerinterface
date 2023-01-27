@@ -22,7 +22,7 @@ getLatestTickersArguments = {
     subscriber: STRING
 }
 ############################################################
-removeClientToServeArguments = {
+getLatestBalancesArguments = {
     authCode: STRINGHEX64
     assets: ARRAY
     subscriber: STRING
@@ -34,43 +34,43 @@ removeClientToServeArguments = {
 #region Maintenance Operations
 
 ############################################################
-addRelevantAsset = {
+addRelevantAssetArguments = {
     authCode: STRINGHEX64
     exchangeName: STRING
     ourName: STRING
 }
 ############################################################
-removeRelevantAsset = {
+removeRelevantAssetArguments = {
     authCode: STRINGHEX64
     ourName: STRING
 }
 ############################################################
-getRelevantAssets = {
+getRelevantAssetsArguments = {
     authCode: STRINGHEX64
 }
 
 ############################################################
-addRelevantAssetPair = {
+addRelevantAssetPairArguments = {
     authCode: STRINGHEX64
     exchangeName: STRING
     ourName: STRING
 }
 ############################################################
-removeRelevantAssetPair = {
+removeRelevantAssetPairArguments = {
     authCode: STRINGHEX64
     ourName: STRING
 }
 ############################################################
-getRelevantAssetPairs = {
+getRelevantAssetPairsArguments = {
     authCode: STRINGHEX64
 }
 
 ############################################################
-getFailingIdentifiers = {
+getFailingIdentifiersArguments = {
     authCode: STRINGHEX64
 }
 ############################################################
-getServiceStatus = {
+getServiceStatusArguments = {
     authCode: STRINGHEX64
 }
 
@@ -94,26 +94,57 @@ getRelevantAssetPairsResponse = {
 getFailingIdentifiersResponse = {
     failingIdentifiers: ARRAY
 }
+## TODO
+# ############################################################
+# getSystemStatusResponse = {
+#     # failingIdentifiers: ARRAY
+# }
 
 #endregion
 
 
 ############################################################
 export responseValidators = {
-    ## Master Functions
-    addClientToServe: -> true
-    getClientsToServe: (response) -> validate(response, getClientsToServeResponse)
-    removeClientToServe: -> true
-    ## Client Functions
-    getNodeId: (response) -> validate(response, getNodeIdResponse)
-    startSession: -> true
+
+    ## Regular Operations
+    getLatestOrders = -> true
+    getLatestTickers = -> true
+    getLatestBalances = -> true
+
+    ## Maintenance Operations
+    addRelevantAsset = -> true
+    removeRelevantAsset = -> true
+    getRelevantAssets = (response) -> validate(response, getRelevantAssetsResponse)
+
+    addRelevantAssetPair = -> true
+    removeRelevantAssetPair = -> true
+    getRelevantAssetPairs = (response) -> validate(response, getRelevantAssetPairsResponse)
+
+    getFailingIdentifiers = (response) -> validate(response, getFailingIdentifiersResponse)
+
+    ## TODO
+    # getServiceStatus = (response) -> validate(response, getServiceStatusResponse)
+    getServiceStatus = -> true
+
 }
 
 export argumentValidators = {
-    addClientToServe: (args) -> validate(args, addClientToServeArguments)
-    getClientsToServe: (args) -> validate(args, getClientsToServeArguments)
-    removeClientToServe: (args) -> validate(args, removeClientToServeArguments)
-    ## Client Functions
-    getNodeId: (args) -> validate(args, getNodeIdArguments)
-    startSession: (args) -> validate(args, startSessionArguments)
+
+    ## Regular Operations
+    getLatestOrders = (args) -> validate(args, getLatestOrdersArguments)
+    getLatestTickers = (args) -> validate(args, getLatestTickersArguments)
+    getLatestBalances = (args) -> validate(args, getLatestBalancesArguments)
+
+    ## Maintenance Operations
+    addRelevantAsset = (args) -> validate(args, addRelevantAssetArguments)
+    removeRelevantAsset = (args) -> validate(args, removeRelevantAssetArguments)
+    getRelevantAssets = (args) -> validate(args, getRelevantAssetsArguments)
+
+    addRelevantAssetPair = (args) -> validate(args, addRelevantAssetPairArguments)
+    removeRelevantAssetPair = (args) -> validate(args, removeRelevantAssetPairArguments)
+    getRelevantAssetPairs = (args) -> validate(args, getRelevantAssetPairsArguments)
+    
+    getFailingIdentifiers = (args) -> validate(args, getFailingIdentifiersArguments)
+    getServiceStatus = (args) -> validate(args, getServiceStatusArguments)
+
 }

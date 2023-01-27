@@ -6,48 +6,97 @@ import { responseValidators as validate} from "./observerschemas.js"
 ok = true
 
 ############################################################
-#region Master Functions
+#region Regular Operations
 
 ############################################################
-export addClientToServe = (req) ->
-    await service.addClientToServe(req)
-    return {ok:true}
+export getLatestOrders = (req) ->
+    response = await service.getLatestOrders(req)
 
-############################################################
-export getClientsToServe = (req) ->
-    response = await service.getClientsToServe(req)
-
-    try validate.getClientsToServe(response)
-    catch err then throw new Error("Error: service.getClientsToServe - response format: #{err.message}")
+    try validate.getLatestOrders(response)
+    catch err then throw new Error("Error: service.getLatestOrders - response format: #{err.message}")
 
     return response
 
 ############################################################
-export removeClientToServe = (req) ->
-    await service.removeClientToServe(req)
-    return {ok:true}
+export getLatestTickers = (req) ->
+    response = await service.getLatestTickers(req)
+
+    try validate.getLatestTickers(response)
+    catch err then throw new Error("Error: service.getLatestTickers - response format: #{err.message}")
+
+    return response
+
+############################################################
+export getLatestBalances = (req) ->
+    response = await service.getLatestBalances(req)
+
+    try validate.getLatestBalances(response)
+    catch err then throw new Error("Error: service.getLatestBalances - response format: #{err.message}")
+
+    return response
 
 #endregion
 
 ############################################################
-#region Client Functions
+#region Maintenance Operations
 
 ############################################################
-export getNodeId = (req) ->
-    response = await service.getSignedNodeId(req)
+export addRelevantAsset = (req) ->
+    await service.addRelevantAsset(req)
+    return {ok}
 
-    try validate.getNodeId(response)
-    catch err then throw new Error("Error: service.getSignedNodeId - response format: #{err.message}")
+############################################################
+export removeRelevantAsset = (req) ->
+    await service.removeRelevantAsset(req)
+    return {ok}
+
+############################################################
+export getRelevantAssets = (req) ->
+    response = await service.getRelevantAssets(req)
+
+    try validate.getRelevantAssets(response)
+    catch err then throw new Error("Error: service.getRelevantAssets - response format: #{err.message}")
 
     return response
 
 
 ############################################################
-export startSession = (req) ->
-    console.log("/startSession")
-    console.log(Object.keys(req))
-    
-    await service.startSession(req)
+export addRelevantAssetPair = (req) ->
+    await service.addRelevantAssetPair(req)
     return {ok}
+
+############################################################
+export removeRelevantAssetPair = (req) ->
+    await service.removeRelevantAssetPair(req)
+    return {ok}
+
+############################################################
+export getRelevantAssetPairs = (req) ->
+    response = await service.getRelevantAssetPairs(req)
+
+    try validate.getRelevantAssetPairs(response)
+    catch err then throw new Error("Error: service.getRelevantAssetPairs - response format: #{err.message}")
+
+    return response
+
+
+############################################################
+export getFailingIdentifiers = (req) ->
+    response = await service.getFailingIdentifiers(req)
+
+    try validate.getFailingIdentifiers(response)
+    catch err then throw new Error("Error: service.getFailingIdentifiers - response format: #{err.message}")
+
+    return response
+
+############################################################
+export getServiceStatus = (req) ->
+    response = await service.getServiceStatus(req)
+
+    try validate.getServiceStatus(response)
+    catch err then throw new Error("Error: service.getServiceStatus - response format: #{err.message}")
+
+    return response
+
 
 #endregion

@@ -1,15 +1,15 @@
 ############################################################
-import { masterAuthentication, clientAuthentication } from "./authenticationfunctions.js"
+import { sessionAuthentication } from "./authenticationfunctions.js"
 
 ############################################################
 #region Regular Operations
 
 ############################################################
-export getLatestOrders = (req) -> await clientAuthentication(req.path, req.body)
+export getLatestOrders = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export getLatestTickers = (req) -> await clientAuthentication(req.path, req.body)
+export getLatestTickers = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export getLatestBalances = (req) -> await clientAuthentication(req.path, req.body)
+export getLatestBalances = (req) -> await sessionAuthentication(req.path, req.body)
 
 #endregion
 
@@ -17,22 +17,22 @@ export getLatestBalances = (req) -> await clientAuthentication(req.path, req.bod
 #region Maintenance Operations
 
 ############################################################
-export addRelevantAsset = (req) -> await clientAuthentication(req.path, req.body)
+export addRelevantAsset = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export removeRelevantAsset = (req) -> await clientAuthentication(req.path, req.body)
+export removeRelevantAsset = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export getRelevantAssets = (req) -> await clientAuthentication(req.path, req.body)
+export getRelevantAssets = (req) -> await sessionAuthentication(req.path, req.body)
 
 ############################################################
-export addRelevantAssetPair = (req) -> await clientAuthentication(req.path, req.body)
+export addRelevantAssetPair = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export removeRelevantAssetPair = (req) -> await clientAuthentication(req.path, req.body)
+export removeRelevantAssetPair = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export getRelevantAssetPairs = (req) -> await clientAuthentication(req.path, req.body)
+export getRelevantAssetPairs = (req) -> await sessionAuthentication(req.path, req.body)
 
 ############################################################
-export getFailingIdentifiers = (req) -> await clientAuthentication(req.path, req.body)
+export getFailingIdentifiers = (req) -> await sessionAuthentication(req.path, req.body)
 ############################################################
-export getServiceStatus = (req) -> await clientAuthentication(req.path, req.body)
+export getServiceStatus = (req) -> await sessionAuthentication(req.path, req.body)
 
 #endregion
