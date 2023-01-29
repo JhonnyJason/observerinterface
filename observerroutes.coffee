@@ -11,6 +11,7 @@ import *  as authentication from "./observerauthentication.js"
 
 ############################################################
 export getLatestOrders = (req, res) ->
+    console.log(" - - - [start] - - - /getLatestOrders\n")
     start = performance.now()
     
     try validate.getLatestOrders(req.body)
@@ -25,12 +26,13 @@ export getLatestOrders = (req, res) ->
 
     end = performance.now()
     diffMS = end - start
-    console.log("/getLatestOrders took #{diffMS}ms\n")
+    console.log(" - - - [end] - - - /getLatestOrders took #{diffMS}ms\n")
     
     return res.send(response)
 
 ############################################################
 export getLatestTickers = (req, res) ->
+    console.log(" - - - [start] - - - /getLatestTickers\n")
     start = performance.now()
     
     try validate.getLatestTickers(req.body)
@@ -45,12 +47,13 @@ export getLatestTickers = (req, res) ->
 
     end = performance.now()
     diffMS = end - start
-    console.log("/getLatestTickers took #{diffMS}ms\n")
+    console.log(" - - - [end] - - - /getLatestTickers took #{diffMS}ms\n")
     
     return res.send(response)
 
 ############################################################
 export getLatestBalances = (req, res) ->
+    console.log(" - - - [start] - - - /getLatestBalances\n")
     start = performance.now()
     
     try validate.getLatestBalances(req.body)
@@ -65,7 +68,7 @@ export getLatestBalances = (req, res) ->
 
     end = performance.now()
     diffMS = end - start
-    console.log("/getLatestBalances took #{diffMS}ms\n")
+    console.log(" - - - [end] - - - /getLatestBalances took #{diffMS}ms\n")
     
     return res.send(response)
 
