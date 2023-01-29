@@ -12,9 +12,9 @@ export getLatestTickers = (sciURL, authCode, assetPairs, subscriber) ->
     requestURL = sciURL+"/getLatestTickers"
     return postData(requestURL, requestObject)
 
-export getLatestBalances = (sciURL, authCode, assetPairs, subscriber) ->
-    requestObject = { authCode, assetPairs, subscriber }
-    requestURL = sciURL+"/getLatestTickers"
+export getLatestBalances = (sciURL, authCode, assets, subscriber) ->
+    requestObject = { authCode, assets, subscriber }
+    requestURL = sciURL+"/getLatestBalances"
     return postData(requestURL, requestObject)
 
 
